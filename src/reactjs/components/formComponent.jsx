@@ -19,14 +19,16 @@ export default class ContactForm extends Component {
     const enquiryBody = { ...this.state };
     delete enquiryBody.success;
     axios({
-        method: 'post',
-        url: 'http://localhost:8080',
-        data: enquiryBody
-    }).then(res => {
-        if(res) this.setState({success: true});
-    }).catch(err => {
-        console.log(err.message ? err.message : 'Unknown error')
-    });
+      method: 'post',
+      url: 'http://localhost:8080',
+      data: enquiryBody
+    })
+      .then(res => {
+        if (res) this.setState({ success: true });
+      })
+      .catch(err => {
+        console.log(err.message ? err.message : 'Unknown error');
+      });
   };
 
   render() {
@@ -37,7 +39,7 @@ export default class ContactForm extends Component {
           className="row"
           className={this.state.success ? 'd-block' : 'd-none'}
         >
-          <div className="col">Your enquiry has been submitted</div>
+          <div className="text-success h3">Your enquiry has been submitted</div>
         </div>
         <form
           onSubmit={this.handleSubmit}
